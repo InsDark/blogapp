@@ -1,39 +1,67 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+import { dataFetcher } from "./fetcher.js";
+import { loginUser } from './login.js';
+const ctgContainer = document.querySelector('.categories-container');
+const init = () => {
+    const categories = dataFetcher('categories');
+    categories.then(categoryList => {
+        categoryList.forEach((category) => {
+            const { category_name } = category;
+            const ancle = document.createElement('a');
+            ancle.href = '#';
+            ancle.textContent = category_name;
+            ctgContainer.append(ancle);
+        });
     });
 };
-const registerUser = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const req = yield fetch('http://localhost/BlogApp/api/post.php', {
-        method: 'POST',
-        body: data
-    });
-    const res = yield req.json();
-    console.log(res);
-});
-const formUser = document.querySelector('form');
+init();
 document.addEventListener('submit', (e) => {
-    if (e.target == formUser) {
-        e.preventDefault();
-        const userName = formUser.children[1].value;
-        const userLastName = formUser.children[3].value;
-        const userEmail = formUser.children[5].value;
-        const userPassword = formUser.children[7].value;
-        if (userLastName !== '' && userEmail !== '' && userPassword !== '' && userName !== '') {
-            getUserData(userName, userEmail, userLastName, userPassword);
-        }
+    e.preventDefault();
+    const formContainer = e.target;
+    if (formContainer.classList.contains('login-form')) {
+        const userEmail = formContainer.querySelector('#login-email');
+        const userPassword = formContainer.querySelector('#login-password');
+        const req = loginUser(userEmail.value, userPassword.value);
+        req.then((res) => {
+            (res[0] == 'Logged') ? location.href = 'http://localhost/BlogApp/' : console.error('error');
+        });
+        // (res == 'Logged') ? console.log('no') : console.log('hola')
     }
 });
-const getUserData = (userName, userEmail, userLastName, userPassword) => {
-    const data = new FormData();
-    data.append('user-name', userName);
-    data.append('user-email', userEmail);
-    data.append('user-password', userPassword);
-    data.append('user-last-name', userLastName);
-    registerUser(data);
-};
+// const registerUser = async (data: FormData) => {
+//     const req = await fetch('http://localhost/BlogApp/api/post.php', {
+//         method: 'POST',
+//         body: data
+//     })
+//     const res = await req.json();
+//     console.log(res);
+// }
+const registerForm = document.querySelector('.register-form');
+const loginForm = document.querySelector('login-form');
+// document.addEventListener('submit', (e) => {
+//     if(e.target == formUser){
+//         e.preventDefault()
+//         const userName : string =  formUser.children[1].value;
+//         const userLastName : string = formUser.children[3].value
+//         const userEmail : string = formUser.children[5].value
+//         const userPassword : string = formUser.children[7].value
+//         if(userLastName !== '' && userEmail !== '' && userPassword !== '' && userName !== ''){
+//             getUserData(userName, userEmail, userLastName, userPassword);
+//         }
+//     }
+// })
+// const getUserData = (userName : string, userEmail: string, userLastName : string, userPassword : string) => {
+//     const data = new FormData();
+//     data.append('user-name', userName);
+//     data.append('user-email', userEmail);
+//     data.append('user-password', userPassword);
+//     data.append('user-last-name', userLastName);
+//     registerUser(data);
+// }
+// const getEntries = async () => {
+//     const url : string = `http://localhost/BlogApp/api/get.php`;
+//     const req = dataFetcher(url)
+//     req.then((Response: any[])  => {
+//         console.log(Response[0]);
+//     });
+// } 
+// getEntries()

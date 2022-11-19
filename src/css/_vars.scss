@@ -5,7 +5,9 @@ $bg-color: #23272A;
 $sub-bg-color: #2C2F33;
 $txt-color: #FFFFFF;
 $sub-bg-color-2: #007ACC;
-$sub-bg-color-3: #39ABE7;
+$sub-bg-color-3: #fccb06;
+$sub-bg-color-4: #f8431f;
+$sub-bg-color-5:  #36827f;
 $txt-font: 'Open Sans', sans-serif;
 $title-font:'Black Ops One', cursive;
 
@@ -18,4 +20,7 @@ $title-font:'Black Ops One', cursive;
     padding:.5rem;
     cursor: pointer;
     border: none;
+    &:hover{
+        filter:grayscale(1);
+    }
 }

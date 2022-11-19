@@ -1,3 +1,8 @@
+<?php 
+if(!isset($_SESSION)){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/style.css">
-    <title>Document</title>
+    <title>Games Everywhere</title>
 </head>
 <body>
     <header>
         <h1>Games Everywhere</h1>
-        <nav>
-            <a href="">Home</a>
-            <a href="">Mobas</a>
-            <a href="">RPG</a>
-            <a href="">Shoother</a>
-            <a href="">Racing</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
+        <nav class='categories-container'>
         </nav>
     </header>
     <main>
@@ -48,17 +46,22 @@
             </div>
         </section>
         <aside>
+        <?php if(isset($_SESSION['login']) == false): ?>
             <section>
-                <div class="suscribe">
-                    <h3>Suscribe Our newsletter</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, eum?</p>
-                    <input type="text" name="" id="">
-                    <a href="#">Sign Up</a>
-                </div>
+                <form class='login-form' method="post">
+                    <h3 class='center'>Login Now</h3>
+
+                    <label for="user-email">Email:</label>
+                    <input type="email" name="user-email" id="login-email">
+
+                    <label for="user-password">Password:</label>
+                    <input type="password" name="user-password" id="login-password">
+                    <button class='wd-all' type="submit ">Login</button>
+                </form>
             </section>
             <section>
                 <h3>Register Now</h3>
-                <form action="./api/post.php" method="post">
+                <form class='login-form' method='post'>
                     <label for="user-name">Name:</label>
                     <input type="text" name="user-name" id="user-name">
 
@@ -70,11 +73,19 @@
 
                     <label for="user-password">Password:</label>
                     <input type="password" name="user-password" id="user-password">
-                    <button type="submitgit ">Register</button>
+                    <button class='wd-all' type="submit ">Register</button>
                 </form>
             </section>
+        <?php endif; ?>
+        <?php if(isset($_SESSION['login']) == true) : ?>
+            <section>
+                <h3>Wha't up <?php echo $_SESSION['user-name']?>?</h3>
+                <a class='wd-all' href="./dashboard/">Dashboard</a>
+                <a class='wd-all bg-red' href="./src/php/close.php">Log Out</a>
+            </section>
+        <?php endif; ?>
         </aside>
     </main>
-    <script src="./src/js/app.js"></script>
+    <script src="./src/js/app.js" type='module'></script>
 </body>
 </html>

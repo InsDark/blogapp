@@ -1,0 +1,26 @@
+@import './vars';
+
+.wd-all {
+    width: 100%;
+}
+
+.center{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bg-blue {
+    background-color: $sub-bg-color-2;
+}
+
+.bg-yellow{
+    background-color: $sub-bg-color-3;
+}
+
+.bg-red {
+    background-color: $sub-bg-color-4;
+}
+
+.bg-cyan{
+    background-color: $sub-bg-color-5;
+}
