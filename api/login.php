@@ -21,11 +21,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 echo json_encode(['Logged']);
             } else{
                 $errors['Something went wrong try again'];
-                echo json_encode($errors);
+                echo json_encode(['xd']);
             }
         } else{
             $errors[] = 'Password or email are not correct';
-            echo json_encode($errors);
+            echo json_encode(['bra']);
         }
         
     } else {

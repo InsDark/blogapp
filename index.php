@@ -61,7 +61,7 @@ if(!isset($_SESSION)){
             </section>
             <section>
                 <h3>Register Now</h3>
-                <form class='login-form' method='post'>
+                <form class='register-form' method='post'>
                     <label for="user-name">Name:</label>
                     <input type="text" name="user-name" id="user-name">
 
