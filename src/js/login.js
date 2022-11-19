@@ -19,8 +19,8 @@ const loginUser = (email, password) => __awaiter(void 0, void 0, void 0, functio
         const res = yield req.json();
         return res;
     }
-    catch (err) {
-        console.log(err);
+    catch (error) {
+        throw (error);
     }
 });
 export { loginUser };

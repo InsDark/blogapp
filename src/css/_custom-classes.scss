@@ -24,3 +24,13 @@
 .bg-cyan{
     background-color: $sub-bg-color-5;
 }
+
+.mg-1 {
+    margin: .5rem auto;
+}
+.bg-dark{
+    $bg-color: $sub-bg-color;
+}
+.bg-light-dark{
+    $sub-bg-color: $sub-bg-color;
+}

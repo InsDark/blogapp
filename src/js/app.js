@@ -1,6 +1,7 @@
 import { dataFetcher } from "./fetcher.js";
 import { loginUser } from './login.js';
 import { registerUser } from "./register.js";
+import { printMsg } from './msgPrinter.js';
 const ctgContainer = document.querySelector('.categories-container');
 const init = () => {
     const categories = dataFetcher('categories');
@@ -23,7 +24,7 @@ document.addEventListener('submit', (e) => {
         const userPassword = formContainer.querySelector('#login-password');
         const req = loginUser(userEmail.value, userPassword.value);
         req.then((res) => {
-            (res[0] == 'Logged') ? location.href = 'http://localhost/BlogApp/' : console.error('error');
+            (res[0] == 'Logged') ? location.href = 'http://localhost/BlogApp/' : printMsg(res[0], formContainer);
         });
     }
     if (formContainer.classList.contains('register-form')) {
@@ -35,7 +36,7 @@ document.addEventListener('submit', (e) => {
             const req = registerUser(userName.value, userLastName.value, userEmail.value, userPassword.value);
             req.then((res) => {
                 console.log(res);
-                (res[0] == "Registered") ? location.href = 'http://localhost/BlogApp/' : console.error('error');
+                (res[0] == "Registered" && res !== null) ? location.href = 'http://localhost/BlogApp/' : console.error(res);
             });
         }
     }
