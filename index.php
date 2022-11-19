@@ -18,7 +18,6 @@
             <a href="">Racing</a>
             <a href="">About Us</a>
             <a href="">Contact Us</a>
-            <a href="">Register</a>
         </nav>
     </header>
     <main>
@@ -49,27 +48,33 @@
             </div>
         </section>
         <aside>
-            <div class="suscribe">
-                <h3>Suscribe Our newsletter</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, eum?</p>
-                <input type="text" name="" id="">
-                <a href="#">Sign Up</a>
-            </div>
-            <div class="popular-posts">
-                <div class="post-item">
-                    <img src="" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, voluptatum.</p>
+            <section>
+                <div class="suscribe">
+                    <h3>Suscribe Our newsletter</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, eum?</p>
+                    <input type="text" name="" id="">
+                    <a href="#">Sign Up</a>
                 </div>
-                <div class="post-item">
-                    <img src="" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, voluptatum.</p>
-                </div>
-                <div class="post-item">
-                    <img src="" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, voluptatum.</p>
-                </div>
-            </div>
+            </section>
+            <section>
+                <h3>Register Now</h3>
+                <form action="./api/post.php" method="post">
+                    <label for="user-name">Name:</label>
+                    <input type="text" name="user-name" id="user-name">
+
+                    <label for="user-last-name">Last Name:</label>
+                    <input type="text" name="user-last-name" id="user-last-name">
+
+                    <label for="user-email">Email:</label>
+                    <input type="email" name="user-email" id="user-email">
+
+                    <label for="user-password">Password:</label>
+                    <input type="password" name="user-password" id="user-password">
+                    <button type="submitgit ">Register</button>
+                </form>
+            </section>
         </aside>
     </main>
+    <script src="./src/js/app.js"></script>
 </body>
 </html>
