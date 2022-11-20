@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($userEmail && $userPassword){
         require './../src/php/db.php';
         $db = connectDB();
-        $query = "SELECT user_password, user_name from users where user_email = '$userEmail'";
+        $query = "SELECT user_id, user_password, user_name from users where user_email = '$userEmail'";
         $res = $db->query($query)->fetch();
         if($res) {
             $passHash = $res['user_password'];
@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_SESSION['login'] = true;
                 $_SESSION['user-email'] = $userEmail;
                 $_SESSION['user-name'] = $res['user_name']; 
+                $_SESSION['user-id'] = $res['user_id'];
                 echo json_encode(['Logged']);
             } else{
                 echo json_encode(['Password or email are incorrect']);

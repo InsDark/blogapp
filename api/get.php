@@ -5,13 +5,15 @@
     if($req == 'categories'){
         $query = "SELECT category_name from $req";
     } else if ($req = 'post') {
-        $query = 'SELECT * from entries';
+        session_start();
+        $userId = $_SESSION['user-id'];
+        $query = "SELECT * from entries where entry_maker = '$userId' ";
     }
     $db = connectDB();
     $res = $db->query($query)->fetchAll();
     if(isset($res) && !empty($res)) {
         echo json_encode($res);
     } else{
-        echo json_encode(['Shomething went wrong']);
+        echo json_encode(['No data']);
     }
 }

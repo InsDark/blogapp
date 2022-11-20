@@ -1,11 +1,5 @@
-<?php 
-if(!isset($_SESSION)){
-    session_start();
-}
-if(!$_SESSION){
-    header('Location: ./../index.php');
-}
-?>
+<?php require'./../src/php/loger.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,24 +7,28 @@ if(!$_SESSION){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../src/css/style.css">
+    <link rel="stylesheet" href="./../src/css/dashboard.css">
     <title>Games Everywhere - Dashboard</title>
 </head>
-<body>
+<body class="gp-1 hg-vh">
     <header>
         <h1>Games Everywhere</h1>
     </header>
-    <main>
+    <main class='mg-1'>
         <section>
+            <div class="entries">
 
+            </div>
         </section>
-        <aside class='bg-dark'>
-            <!-- <section> -->
-                <h2>Hello World!</h2>
-                <h3>My Entries</h3>
-                <h3>My Entries</h3>
-            <!-- </section> -->
+        <aside>
+            <section>
+                <h2 class='center'>Hello, <?php echo $_SESSION['user-name'] ?></h2>
+                <a href='./maker.php' class='wd-all'>Make post</a>
+                <a class='wd-all bg-cyan'>Edit Profile</a>
+                <a href='./../src/php/close.php' class='wd-all bg-red'>Log Out</a>
+            </section>
         </aside>
     </main>
-    <!-- <script src="./src/js/app.js" type='module'></script> -->
+    <script src="./../src/js/dashboard.js" type='module'></script>
 </body>
 </html>

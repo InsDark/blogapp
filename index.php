@@ -78,7 +78,7 @@
         <?php if(isset($_SESSION['login']) == true) : ?>
             <section>
                 <h3>Wha't up <?php echo $_SESSION['user-name']?>?</h3>
-                <a class='wd-all' href="./dashboard/">Dashboard</a>
+                <a class='wd-all' href="./dashboard/dashboard.php">Dashboard</a>
                 <a class='wd-all bg-red' href="./src/php/close.php">Log Out</a>
             </section>
         <?php endif; ?>

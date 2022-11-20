@@ -15,12 +15,17 @@ h1, h2, h3, h4, h5, h6 {
 body {
     background-color: $sub-bg-color;
     color: $txt-color;
+    display: grid;
+    grid-template-rows: auto auto ;
+    height: auto;
 }
+
 body > * {
     width: 80%;
     margin: 0 auto;
     background-color: $bg-color;
 }
+
 header{
     h1{
         padding: 1rem;
@@ -45,11 +50,13 @@ header{
 }
 
 main{
+    height: 100%;
     display: grid;
     grid-template-columns: 70% auto;
     grid-gap: 1rem;
     padding: 1rem;
     section{
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -83,6 +90,7 @@ main{
         }
     }
     aside{
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 1rem;

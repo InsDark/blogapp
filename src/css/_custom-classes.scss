@@ -25,12 +25,18 @@
     background-color: $sub-bg-color-5;
 }
 
-.mg-1 {
-    margin: .5rem auto;
+.gp-1 {
+    gap: .5rem;
 }
 .bg-dark{
-    $bg-color: $sub-bg-color;
+   background-color: $bg-color;
 }
 .bg-light-dark{
-    $sub-bg-color: $sub-bg-color;
+    background-color: $sub-bg-color;
+}
+.hg-vh {
+    height: 100vh;
+}
+.hg-100{
+    height: 100%;
 }
