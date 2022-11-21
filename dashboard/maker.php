@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./../src/css/dashboard.css">
     <title>Games Everywhere - Dashboard</title>
 </head>
-<body class="gp-1">
+<body class="gp-1" id='maker'>
     <header>
         <h1>Games Everywhere</h1>
     </header>

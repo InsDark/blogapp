@@ -1,11 +1,13 @@
 <?php 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $postTitle = isset($_POST['post-title']);
-    $postContent = isset($_POST['post-content']);
+    $postTitle = $_POST['post-title'];
+    $postContent = $_POST['post-content'];
     $postImage = $_FILES['post-image']['tmp_name'];
     $postCategory = $_POST['post-category'];
+    echo json_encode($_POST);
+    die();
     if(isset($postCategory) && isset($postTitle) && isset($postContent) && isset($postImage)){
-
+        
         require './../src/php/loger.php';
         require './../src/php/db.php';
         $db = connectDB();
@@ -18,8 +20,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $stm = $db->prepare($query);
         $res = $stm->execute();
-        
-        // $res = $db->query($query);
         
         if($res) {
             move_uploaded_file($postImage, "./../posts/$imgName");

@@ -10,15 +10,12 @@
     <link rel="stylesheet" href="./../src/css/dashboard.css">
     <title>Games Everywhere - Dashboard</title>
 </head>
-<body class="gp-1 hg-vh">
+<body class="gp-1" id='dashboard'>
     <header>
         <h1>Games Everywhere</h1>
     </header>
     <main class='mg-1'>
-        <section>
-            <div class="entries">
-
-            </div>
+        <section class='entries'>
         </section>
         <aside>
             <section>

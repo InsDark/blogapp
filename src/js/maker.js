@@ -21,6 +21,9 @@ document.addEventListener('submit', (e) => {
                         postForm.reset();
                         printMsg(res[0], postForm, 'green');
                     }
+                    else {
+                        console.log(res);
+                    }
                 });
             }
             catch (e) {
