@@ -8,12 +8,12 @@ if(count($endPointParts) > 2){
     $req = $_SERVER["REQUEST_METHOD"];
 
     if($req == 'GET') {
-        require './get.php';
+        require './methods/get.php';
         get($endPoint);
-        // get($res);
     } else if($req == 'POST'){
-
-    } else if($req == 'PUT'){
+        require './methods/post.php';
+        post($endPoint);
+    } else if($req == 'PATCH'){
 
     } else {
 

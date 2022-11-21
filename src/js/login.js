@@ -12,7 +12,7 @@ const loginUser = (email, password) => __awaiter(void 0, void 0, void 0, functio
     data.append('user-email', email);
     data.append('user-password', password);
     try {
-        const req = yield fetch(`http://localhost/BlogApp/api/login.php`, {
+        const req = yield fetch(`http://localhost/BlogApp/src/helpers/login.php`, {
             method: 'POST',
             body: data
         });
