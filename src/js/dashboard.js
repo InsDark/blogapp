@@ -1,16 +1,7 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-import { dataFetcher } from "./fetcher.js";
+import { makeRequest } from "./requester.js";
 const init = () => {
     const sec = document.querySelector('.entries');
-    const req = dataFetcher('posts');
+    const req = makeRequest('post/user', null, 'GET');
     req.then((response) => {
         if (response[0] == 'No data') {
             const h2 = document.createElement('h2');
@@ -32,9 +23,9 @@ const init = () => {
                     <p>${entry_content}</p>
                     <span> ${entry_date}</span>
                     <div>
-                    <a >Read</a>
-                    <a class='bg-red'>Edit</a>
-                    <a class='bg-cyan'>Delete</a>
+                    <a>Read</a>
+                    <a class='updater'>Edit</a>
+                    <a class='deleter'>Delete</a>
                     </div>`;
                 sec.append(postItem);
             });
@@ -45,20 +36,8 @@ init();
 document.addEventListener('click', (e) => {
     if (e.target.textContent == 'Delete') {
         const blogId = e.target.parentElement.parentElement.getAttribute('id');
-        const data = new FormData();
-        data.append('blog-id', blogId);
-        makeRequest('delete.php', data, 'DELETE');
+        const req = makeRequest(`post/${blogId}`, null, 'DELETE');
+        req.then((response) => { console.log(response); });
     }
-});
-const makeRequest = (endPoint, data = '', method) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const req = yield fetch(`http://localhost/BlogApp/api/${endPoint}/1`, {
-            method: method,
-            body: data
-        });
-        const res = yield req.json();
-        console.log(res);
-    }
-    catch (err) {
-    }
+    // if(e.target.textContent ==)
 });

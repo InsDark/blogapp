@@ -1,8 +1,12 @@
 <?php
 function evokeData ($query) {
     $db = connectDB();
-    $res = $db->query($query)->fetchAll();
-    
+    $stm = $db->query($query);
+    $res = [];
+    while ($row = $stm->fetch(\PDO::FETCH_ASSOC)){
+        $res[] = $row;
+    }
+
     if(isset($res) && !empty($res)) {
         echo json_encode($res);
     } else{

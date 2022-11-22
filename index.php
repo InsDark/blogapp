@@ -18,30 +18,7 @@
     </header>
     <main>
         <section class="entries">
-            <div class="blog-item">
-                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-
-                    <img></img>
-                    <h3>Kono Dio Da</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis blanditiis totam cumque asperiores odio deleniti suscipit. Distinctio officiis ducimus odit. Fugiat quod dolores a non incidunt consequuntur aut ipsum laborum.</p>
-                    <a href="">Read More</a>
-
-            </div>
-            <div class="blog-item">
-                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-                <img></img>
-                    <h3>Kono Dio Da</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis blanditiis totam cumque asperiores odio deleniti suscipit. Distinctio officiis ducimus odit. Fugiat quod dolores a non incidunt consequuntur aut ipsum laborum.</p>
-                    <a href="">Read More</a>
-
-            </div>
-            <div class="blog-item">
-                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-                <img></img>
-                    <h3>Kono Dio Da</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis blanditiis totam cumque asperiores odio deleniti suscipit. Distinctio officiis ducimus odit. Fugiat quod dolores a non incidunt consequuntur aut ipsum laborum.</p>
-                    <a href="">Read More</a>
-            </div>
+            
         </section>
         <aside>
         <?php if(isset($_SESSION['login']) == false): ?>
