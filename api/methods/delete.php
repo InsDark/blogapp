@@ -8,7 +8,8 @@ function deleter ($endpoint) {
         $query = "SELECT entry_img from entries where entry_id = $id";
         $imgUrl = $db->query($query)->fetch();
         if($imgUrl) {
-            $res = unlink("./../posts/$imgUrl");
+            $imgPath = "./../posts/" . $imgUrl['entry_img'];
+            $res = unlink($imgPath);
             if($res) {
                 $query = "DELETE FROM entries where entry_id = $id";
                 $db->query($query);

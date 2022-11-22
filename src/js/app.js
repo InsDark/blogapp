@@ -17,12 +17,14 @@ const init = () => {
     });
     const res = makeRequest('post', null, 'GET');
     res.then((blogs) => {
-        blogs.forEach((blog) => {
-            const { entry_title, entry_img, entry_content, entry_date, category_name } = blog;
-            const blogItem = document.createElement('div');
-            blogItem.classList.add('blog-item');
-            blogItem.innerHTML =
-                `<h2>${entry_title}</h2>
+        console.log(blogs);
+        if (blogs[0] !== 'No data') {
+            blogs.forEach((blog) => {
+                const { entry_title, entry_img, entry_content, entry_date, category_name } = blog;
+                const blogItem = document.createElement('div');
+                blogItem.classList.add('blog-item');
+                blogItem.innerHTML =
+                    `<h2>${entry_title}</h2>
                 <img src='./posts/${entry_img}'>
                 <div>
                     <h4>By: Kono Dio DA</h4>
@@ -30,8 +32,17 @@ const init = () => {
                 </div>    
                 <p>${entry_content}</p>
                 <a href="">Read More</a>`;
-            postsContainer.append(blogItem);
-        });
+                postsContainer.append(blogItem);
+            });
+        }
+        else {
+            const h2 = document.createElement('h2');
+            h2.classList.add('center', 'wd-all');
+            h2.style.backgroundColor = '#2C2F33';
+            h2.style.padding = '1rem 0';
+            h2.textContent = 'No posts available';
+            postsContainer.appendChild(h2);
+        }
     });
 };
 init();

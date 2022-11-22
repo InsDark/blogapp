@@ -1,11 +1,12 @@
+import { printMsg } from "./msgPrinter.js";
 import { makeRequest } from "./requester.js";
+const sec = document.querySelector('.entries');
 const init = () => {
-    const sec = document.querySelector('.entries');
     const req = makeRequest('post/user', null, 'GET');
     req.then((response) => {
         if (response[0] == 'No data') {
             const h2 = document.createElement('h2');
-            h2.classList.add('center');
+            h2.classList.add('center', 'wd-all');
             h2.style.backgroundColor = '#2C2F33';
             h2.style.padding = '1rem 0';
             h2.textContent = 'You dont have post published, make one';
@@ -35,9 +36,17 @@ const init = () => {
 init();
 document.addEventListener('click', (e) => {
     if (e.target.textContent == 'Delete') {
-        const blogId = e.target.parentElement.parentElement.getAttribute('id');
+        const blogElement = e.target.parentElement.parentElement;
+        const blogId = blogElement.getAttribute('id');
         const req = makeRequest(`post/${blogId}`, null, 'DELETE');
-        req.then((response) => { console.log(response); });
+        req.then((response) => {
+            if (response != undefined && response[0] == 'The post has been deleted successfully') {
+                blogElement.remove();
+                init();
+            }
+            else {
+                printMsg('The post has not been deleted successfully', sec, 'red');
+            }
+        });
     }
-    // if(e.target.textContent ==)
 });

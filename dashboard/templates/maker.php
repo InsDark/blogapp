@@ -1,4 +1,4 @@
-<?php require'./../src/php/loger.php'?>
+<?php require'./../src/helpers/loger.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +26,7 @@
                     <label for="post-category">Post Category:</label>
                     <select name="post-category" id="">
                         <option value="0" class='center'>--Choose A Category--</option>
-                        <?php require './../src/php/db.php';
+                        <?php require './../src/helpers/db.php';
                         
                         $db = connectDB();
                         $query = 'SELECT category_id, category_name from categories';
@@ -51,9 +51,9 @@
         <aside>
             <section>
                 <h2 class='center'>Hello, <?php echo $_SESSION['user-name'] ?></h2>
-                <a href='./dashboard.php' class='wd-all'>Dashboard</a>
+                <a href='./' class='wd-all'>Dashboard</a>
                 <a class='wd-all bg-cyan'>Edit Profile</a>
-                <a href='./../src/php/close.php' class='wd-all bg-red'>Log Out</a>
+                <a href='./../src/helpers/close.php' class='wd-all bg-red'>Log Out</a>
             </section>
         </aside>
     </main>

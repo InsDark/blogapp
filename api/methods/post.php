@@ -2,21 +2,22 @@
 if(!isset($_SESSION)) {
     session_start();
 }
-function post($params) {
-    require './../src/php/db.php';
 
+function post($params) {
+
+    require './../src/helpers/db.php';
     $params = explode('/', $params);
     $endpoint = $params[0];
     $query;
 
-    if($endpoint == 'user' && count($params ) == 1) {
+    if($endpoint == 'user' && isset($_SESSION) ) {
         $userEmail = filter_var( trim($_POST['user-email']), FILTER_VALIDATE_EMAIL );
         $userName = filter_var( trim( $_POST['user-name']), FILTER_DEFAULT);
         $userLastName = filter_var( trim($_POST['user-last-name']), FILTER_DEFAULT);
         $userPassword = filter_var( trim($_POST['user-password']), FILTER_DEFAULT);
         $errors = [];
         if(isset($userName) && isset($userLastName) && isset($userPassword) && isset($userEmail)){
-            require './../src/php/db.php';
+            require './../src/helpers/db.php';
             $userPassHash = password_hash($userPassword, PASSWORD_BCRYPT, ['cost'=> 4]);
             $db = connectDB();
             $query = "INSERT INTO users VALUES(null, '$userName', '$userLastName', '$userEmail', '$userPassHash')";
@@ -30,15 +31,15 @@ function post($params) {
             $errors[] = 'The credential already exits';
             echo json_encode($errors);
         }
-    } else if($endpoint == 'post' && count($params ) == 1){
+    } else if($endpoint == 'post' && isset($_SESSION)){
         $postTitle = $_POST['post-title'];
         $postContent = $_POST['post-content'];
         $postImage = $_FILES['post-image']['tmp_name'];
         $postCategory = $_POST['post-category'];
-        if(isset($postCategory) && isset($postTitle) && isset($postContent) && isset($postImage)){
 
-            require './../src/php/loger.php';
-            require './../src/php/db.php';
+        if(isset($postCategory) && isset($postTitle) && isset($postContent) && isset($postImage)){
+            require './../src/helpers/loger.php';
+            
             $db = connectDB();
 
             $date = date('Y-m-d');

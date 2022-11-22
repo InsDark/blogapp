@@ -15,13 +15,7 @@ function get($params) {
     }  
 
     else if ($endpoint == 'post' && count($params) == 1) { 
-        $query = "SELECT MAX(entry_id) FROM entries";
-        $db = connectDB();
-
-        $res = $db->query($query)->fetch();
-        $max = $res[0];
-        $min = $res[0] - 10;
-        $query = "SELECT e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_name, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id WHERE e.entry_id BETWEEN $min AND $max ";
+        $query = "SELECT e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_name, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id LIMIT 10 ";
         evokeData($query);
     }
 
