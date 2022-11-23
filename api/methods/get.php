@@ -15,7 +15,7 @@ function get($params) {
     }  
 
     else if ($endpoint == 'post' && count($params) == 1) { 
-        $query = "SELECT e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_name, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id LIMIT 10 ";
+        $query = "SELECT u.user_name, u.user_last_name, e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_name, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id INNER JOIN users u on e.entry_maker = u.user_id ORDER BY entry_id DESC LIMIT 10";
         evokeData($query);
     }
 

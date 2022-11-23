@@ -1,5 +1,4 @@
 import { loginUser } from './login.js';
-import { registerUser } from "./register.js";
 import { printMsg } from './msgPrinter.js';
 import { makeRequest } from './requester.js';
 const ctgContainer = document.querySelector('.categories-container');
@@ -17,17 +16,16 @@ const init = () => {
     });
     const res = makeRequest('post', null, 'GET');
     res.then((blogs) => {
-        console.log(blogs);
         if (blogs[0] !== 'No data') {
             blogs.forEach((blog) => {
-                const { entry_title, entry_img, entry_content, entry_date, category_name } = blog;
+                const { user_name, user_last_name, entry_title, entry_img, entry_content, entry_date, category_name } = blog;
                 const blogItem = document.createElement('div');
                 blogItem.classList.add('blog-item');
                 blogItem.innerHTML =
                     `<h2>${entry_title}</h2>
                 <img src='./posts/${entry_img}'>
                 <div>
-                    <h4>By: Kono Dio DA</h4>
+                    <h4>By: ${user_name} ${user_last_name} </h4>
                     <span>${category_name}</span> - <span>${entry_date}</span>
                 </div>    
                 <p>${entry_content}</p>
@@ -63,7 +61,12 @@ document.addEventListener('submit', (e) => {
         const userLastName = formContainer.querySelector('#user-last-name');
         const userPassword = formContainer.querySelector('#user-password');
         if (userLastName.value.trim() !== '' && userEmail.value.trim() !== '' && userPassword.value.trim() !== '' && userName.value.trim() !== '') {
-            const req = registerUser(userName.value, userLastName.value, userEmail.value, userPassword.value);
+            const data = new FormData();
+            data.append('user-email', userEmail.value);
+            data.append('user-name', userName.value);
+            data.append('user-last-name', userLastName.value);
+            data.append('user-password', userPassword.value);
+            const req = makeRequest('user', data, 'POST');
             req.then((res) => {
                 console.log(res);
                 (res[0] == "Registered" && res !== null) ? location.href = 'http://localhost/BlogApp/' : console.error(res);

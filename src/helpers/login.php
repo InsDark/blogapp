@@ -2,7 +2,6 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $userEmail = filter_var( $_POST['user-email'],FILTER_VALIDATE_EMAIL );
     $userPassword =  $_POST['user-password'];
-
     if($userEmail && $userPassword){
         require './db.php';
         $db = connectDB();

@@ -1,4 +1,3 @@
-// import {posterData} from './poster.js'
 import { printMsg } from './msgPrinter.js';
 import { makeRequest } from './requester.js';
 document.addEventListener('submit', (e) => {
