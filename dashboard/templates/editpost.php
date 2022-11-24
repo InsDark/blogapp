@@ -1,8 +1,7 @@
 <?php require'./../src/helpers/loger.php'?>
-
 <head>
-    <link rel="stylesheet" href="./../src/css/style.css">
-    <link rel="stylesheet" href="./../src/css/dashboard.css">
+    <link rel="stylesheet" href="./../../src/css/style.css">
+    <link rel="stylesheet" href="./../../src/css/dashboard.css">
 </head>
 <body class="gp-1" id='maker'>
     <header>
@@ -15,7 +14,7 @@
                 <input name="post-title" type="text">
                 
                 <div class='post-details'>
-                    <label for="post-image">Post Image:</label>
+                    <label for="post-image">Post Image: <h6><-- Keep empty if dont want to change image--></h6></label>
                     <input type='file' name="post-image">
                     
                     <label for="post-category">Post Category:</label>
@@ -38,8 +37,6 @@
                     
                     <label for="post-content">Post Content:</label>
                     <textarea name="post-content" id="post-content" cols="30"></textarea>
-                    
-
                 <button type='submit'>Publish Post</button>
             </form>
         </section>
@@ -52,6 +49,6 @@
             </section>
         </aside>
     </main>
-    <script src="./../src/js/maker.js" type='module'></script>
+    <script src="./../../src/js/editpost.js" type='module'></script>
 </body>
 </html>

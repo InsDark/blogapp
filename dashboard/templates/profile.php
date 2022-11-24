@@ -10,6 +10,11 @@
     $userEmail = $res->{'user_email'};
 
 ?>
+
+<head>
+    <link rel="stylesheet" href="./../src/css/style.css">
+    <link rel="stylesheet" href="./../src/css/dashboard.css">
+</head>
 <body class="gp-1" id='dashboard'>
     <header>
         <h1><a href="./../">Games Everywhere</a></h1>

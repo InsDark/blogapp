@@ -25,7 +25,7 @@ const init = () => {
                     <span> ${entry_date}</span>
                     <div>
                     <a>Read</a>
-                    <a class='updater'>Edit</a>
+                    <a href='./edit-post/${entry_id}' class='updater'>Edit</a>
                     <a class='deleter'>Delete</a>
                     </div>`;
                 sec.append(postItem);
@@ -45,7 +45,8 @@ document.addEventListener('click', (e) => {
                 init();
             }
             else {
-                printMsg('The post has not been deleted successfully', sec, 'red');
+                console.log(response);
+                printMsg('The post has not been deleted', sec, 'red');
             }
         });
     }

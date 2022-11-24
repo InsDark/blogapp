@@ -1,7 +1,7 @@
 <?php 
 function deleter ($endpoint) {
     $params = explode('/', $endpoint);
-    if (count($params) ==2 && $params[0] == 'post' && is_int(intval($params[1]))){
+    if (count($params) == 2 && $params[0] == 'post' && is_int(intval($params[1]))){
         require './../src/helpers/db.php';
         $db = connectDB();
         $id = $params[1];

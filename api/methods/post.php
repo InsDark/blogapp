@@ -79,6 +79,35 @@ function post($params) {
                 echo json_encode(['Your info was uploaded successfully', $res]);
             }
         }
+    } else if ($endpoint == 'posts' && intval($params[1]) != 0){
+        $postId = intval($params[1]);
+        $db = connectDB();
+        $postTitle = $_POST['post-title'];
+        $postCategory = $_POST['post-category'];
+        $postContent = $_POST['post-content'];
+        $query = "UPDATE entries SET entry_title = '$postTitle', entry_category = '$postCategory', entry_content = '$postContent'";
+        if(isset($_FILES['post-image'])){
+            $imgReference = $db->query("SELECT entry_img from entries WHERE entry_id = $postId")->fetch();  
+            
+            $res = unlink("./../posts/" . $imgReference['entry_img']);
+
+            if($res) {
+                // echo json_encode()
+                $imgName = $_FILES['post-image']['name'];
+                $imgNameHass = md5($imgName) .'.jpg';
+                $query .= ", entry_img = '$imgNameHass' WHERE entry_id = $postId";
+                move_uploaded_file($_FILES['post-image']['tmp_name'], "./../posts/$imgNameHass");
+                $db->query($query);
+                
+                echo json_encode(['The post was successfully updated']);
+            } else{
+                echo json_encode(['An error has occurred']);
+            }
+        } else{
+            $query .= " WHERE entry_id = $postId";
+            $db->query($query);
+            echo json_encode(['The post was successfully updated']);
+        }
     }
     
     else{
