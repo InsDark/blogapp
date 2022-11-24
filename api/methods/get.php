@@ -30,7 +30,7 @@ function get($params) {
     
     else if($endpoint == 'post' && is_int(intval($params[1])) && intval($params[1]) != 0){
         $postId = intval($params[1]);
-        $query = "SELECT e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_id, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id WHERE entry_id = $postId ";
+        $query = "SELECT u.user_name, u.user_last_name, e.entry_title, e.entry_img, e.entry_content, e.entry_date, c.category_id, e.entry_id from entries e INNER JOIN categories c ON e.entry_category = c.category_id INNER JOIN users u ON e.entry_maker = u.user_id WHERE entry_id = $postId ";
         evokeData($query);
     }
 

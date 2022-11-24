@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none ;
+    color: inherit;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $title-font;
     font-weight: normal;
@@ -49,12 +54,32 @@ header{
     }
 }
 
+section.post:has(div.blog-item){
+    .blog-item{
+        display: flex;
+        flex-direction: column;
+        h2{
+            font-size: 2rem;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        div{
+            h3{
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
 main{
     height: 100%;
     display: grid;
     grid-template-columns: 70% auto;
     grid-gap: 1rem;
     padding: 1rem;
+
     section{
         position: relative;
         display: flex;

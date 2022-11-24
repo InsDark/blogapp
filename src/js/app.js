@@ -8,7 +8,6 @@ const observer = new IntersectionObserver((entry) => {
             const req = makeRequest(`posts/${entryId}`, null, 'GET');
             req.then((response) => {
                 if (response[0] != 'No data') {
-                    console.log(response);
                     renderPosts(response);
                 }
                 else {
@@ -71,7 +70,6 @@ document.addEventListener('submit', (e) => {
             data.append('user-password', userPassword.value);
             const req = makeRequest('user', data, 'POST');
             req.then((res) => {
-                console.log(res);
                 (res[0] == "Registered" && res !== null) ? location.href = 'http://localhost/BlogApp/' : console.error(res);
             });
         }
