@@ -18,7 +18,7 @@ const render = (post) => {
         <div class='maker-info'>
             <h3>Made By: ${user_name} ${user_last_name} - Date: ${entry_date}</h3>
         </div>
-        <div> ${entry_content}</div>
+        <div class='entry-content'> ${entry_content}</div>
         `;
     sec.appendChild(blogItem);
     console.log(post);

@@ -94,7 +94,7 @@ const renderPosts = (posts) => {
                 <span>${category_name}</span> - <span>${entry_date}</span>
                 </div>    
                 <p>${entry_content}</p>
-                <a href="">Read More</a>`;
+                <a href="./reader/${entry_id}">Read More</a>`;
         postsContainer.append(blogItem);
     });
     setObserver();

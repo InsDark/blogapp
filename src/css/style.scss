@@ -60,6 +60,7 @@ section.post:has(div.blog-item){
         flex-direction: column;
         h2{
             font-size: 2rem;
+            text-transform: uppercase;
         }
         img{
             width: 100%;
@@ -69,6 +70,12 @@ section.post:has(div.blog-item){
             h3{
                 font-size: 1rem;
             }
+        }
+        .entry-content{
+            font-size:1.3rem;
+            font-family: $txt-font;
+            font-weight: lighter;
+            
         }
     }
 }
