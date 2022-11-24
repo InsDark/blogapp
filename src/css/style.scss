@@ -112,3 +112,83 @@ main{
         }
     }
 }
+
+@media (max-width: 850px) {
+    body {
+        width: 100%;
+        header{
+            width: 100%;
+            h1{
+                text-align: center;
+            }
+            nav{
+                display: none;
+            }
+        }
+        main{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            section{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                .blog-item{
+                    p,div{
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -webkit-line-clamp: 3;
+                    }
+                    background-color: $sub-bg-color;
+                    display: grid;
+                    grid-template-columns: 30% 70%;
+                    grid-template-rows: repeat(4, auto);
+                    grid-gap: 1rem;
+                    padding: 1rem 2rem;
+                    h2{
+                        color: $sub-bg-color-2;
+                        grid-area: 1/1/2/3;
+                        
+                    }
+                    img{
+                        grid-area: 2/1/5/2;
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+            section:has(form){
+                display: none;
+            }
+            aside{
+                position: sticky;
+                bottom: 0;
+                h3{
+                    display: none;
+                }
+                gap: 1rem;
+                section:has(a){
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+        }
+        
+    }
+}
+
+@media (max-width: 1200px) {
+    body{
+        width: 100%;
+        header{
+            width: 100%;
+        }
+        main{
+            width: 100%;
+        }
+    }
+    
+}

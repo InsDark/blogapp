@@ -43,9 +43,9 @@
         <aside>
             <section>
                 <h2 class='center'>Hello, <?php echo $_SESSION['user-name'] ?></h2>
-                <a href='./' class='wd-all'>Dashboard</a>
-                <a href='./edit-profile' class='wd-all bg-cyan'>Edit Profile</a>
-                <a href='./../src/helpers/close.php' class='wd-all bg-red'>Log Out</a>
+                <a href='./../' class='wd-all'>Dashboard</a>
+                <a href='./../edit-profile' class='wd-all bg-cyan'>Edit Profile</a>
+                <a href='./../../src/helpers/close.php' class='wd-all bg-red'>Log Out</a>
             </section>
         </aside>
     </main>
